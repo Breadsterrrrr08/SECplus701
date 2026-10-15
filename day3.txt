@@ -1,0 +1,124 @@
+IAM: Identity and access management:
+Azure vs AWS vs google IAM
+
+Task1: Install a hybrid: IAM azure server.
+
+UTM: unified threat management:
+firewall
+vpn server
+anti virus enterprise 
+IPS(Intrution prevention system)/IDS(Intrution detection system)
+NAC: net ad control
+
+step1: powershell
+hostname
+rename-computer iam42
+set-netfirewallprofile -name public, private, domain -enabled false
+ncpa.cpl
+restart-computer
+
+step2: secured network should mirror your org chart:
+
+OU:
+admin
+soc analyst
+hrd
+finance
+accting
+
+
+task3: how to be a storage engineer
+
+diskmgmt.msc
+WHERE TO BACKUP/STORE CRITICAL DATA:
+"rule of 3:" always save in 3 places:
+locally + cloud + smwhere else
+
+100mb = 1gb
+1000gb = 1tb
+1000tb = 1pb
+
+StoragePool-VirtualDdrive
+
+
+type of storage:
+simple volume: default storage
+spanned volume: garbage collector
+raid zero: best for internetcafe/4k videos
+mirrored volume: best to protect OS: Windows/Linux
+raid5: best to protect sql database
+
+site resiliency and backup concept:
+backup exec, veritas, veamm, RUBRIK.
+
+backup only needed when malware virus etc
+full backup-whole backup
+differential backup-checks the last full backup
+incremental backup-saves the same day lang 
+copy backup
+
+PAA
+password policy
+account lockout policy
+audit policy
+
+
+task 4:: group polcy to restrict depts:
+no control panel
+no network connections
+no cmd
+no storaga deny access (usb disabled)
+
+task4: privilege access:
+
+
+
+
+s-a-sa-e
+
+MORE HACKABLE(?)
+WINDOWS OR LINUX
+
+how to get wifi passswords locally/network:
+
+netsh wlan show profile name="3F-Rivan" key=clear
+nmap -sP 10.3.3.0/24
+
+hacker			victim:
+-------------------SYN------------------->
+<-----------------ACT--------------------
+-------------------SYNACT------------->
+<------------------ESTABLISH------->
+
+tcp.flags.syn== 1
+
+net use \\10.3.3.152\ipc$
+
+attack 139: net use \\10.3.3.100+kalaban\ipc$
+attack 445: net use x: /delete
+	   net use x: \\10.3.3.100+kalaban\c$
+
+how to know if u been attacked:
+	netstat -n -p tcp | findstr 445
+
+
+Task7: network address translation and port address translation: nat/pat
+
+config t
+no access-list 8
+access-list 8 permit host 192.168.103.10
+access-list 8 permit host 192.168.103.11
+Int Gi 3
+ ip nat Inside
+Int gi 1
+ ip nat Outside
+IP Nat inside source static tcp 192.168.103.10 80 208.8.8.69 80
+IP Nat inside source static tcp 192.168.103.10 443 208.8.8.69 443
+IP Nat inside source static tcp 192.168.103.11 80 208.8.8.69 8080
+IP Nat inside source static tcp 192.168.103.11 443 208.8.8.69 8443
+ip host for betlog.com 208.8.8.69
+ip host for betlog.ph 208.8.8.69
+
+
+
+#2026101571000012
